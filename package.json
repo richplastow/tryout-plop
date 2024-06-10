@@ -4,6 +4,7 @@
   "description": "Exploring 'Plop' which Turborepo uses for code generation",
   "main": "index.js",
   "scripts": {
+    "plop": "plop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/richplastow/tryout-plop/issues"
   },
-  "homepage": "https://richplastow.com/tryout-plop/"
+  "homepage": "https://richplastow.com/tryout-plop/",
+  "devDependencies": {
+    "plop": "^4.0.1"
+  }
 }
