@@ -1,0 +1,33 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Dependencies.
+node_modules
+
+# IDEs and editors.
+.c9/
+.classpath
+.project
+.settings/
+*.launch
+*.sublime-workspace
+/.idea
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+.vscode/*
+
+# Caches and logs.
+.nx/cache
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+/typings
+npm-debug.log
+testem.log
+yarn-error.log
+
+# System files.
+.DS_Store
+Thumbs.db

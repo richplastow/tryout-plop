@@ -1,0 +1,24 @@
+{
+  "name": "tryout-plop",
+  "version": "0.0.1",
+  "description": "Exploring 'Plop' which Turborepo uses for code generation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richplastow/tryout-plop.git"
+  },
+  "keywords": [
+    "plop",
+    "turbo",
+    "handlebars"
+  ],
+  "author": "Rich Plastow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/richplastow/tryout-plop/issues"
+  },
+  "homepage": "https://richplastow.com/tryout-plop/"
+}
