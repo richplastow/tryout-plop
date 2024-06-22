@@ -1,4 +1,7 @@
-export default function (plop) {
+export default function (
+    /** @type {import('plop').NodePlopAPI} */
+    plop
+) {
     plop.setGenerator('example-1', {
         description: 'First example generator',
         prompts: [

@@ -7,7 +7,7 @@ handlebars in a more sophisticated way. It also outputs more than one file.
 
 ## Start creating the second example generator
 
-Create another `plop.setGenerator()` call, in plopfile.mjs in the top-level.
+Create another `plop.setGenerator()` call, in plopfile.js in the top-level.
 
 The `force: true` property is handy, because we will be re-running this example
 several times while creating it, and giving it the same heading every time avoids
@@ -160,7 +160,7 @@ Plop comes with some built-in
 which are listed in the node_modules/node-plop/src/baked-in-helpers.js script.
 
 These built-in helpers are made available to Plop’s handlebars instance, so can
-be used immediately in plopfile.mjs:
+be used immediately in plopfile.js:
 
 ```js
 ...
@@ -235,7 +235,7 @@ body {
 }
 ```
 
-And in plopfile.mjs tell the second example’s `actions` array how to generate them:
+And in plopfile.js tell the second example’s `actions` array how to generate them:
 
 ```mjs
 export default function (plop) {

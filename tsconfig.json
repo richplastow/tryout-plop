@@ -1,0 +1,31 @@
+/**
+ * This file tells VS Code's TypeScript server to highlight type errors in the
+ * plopfile.js JavaScript file. You read that right: the plopfile is JavaScript,
+ * not TypeScript, but the developer experience still benefits from live type
+ * checking.
+ *
+ * This file does not:
+ * - Generate any type declarations
+ * - Check that types are used correctly before deployment
+ */
+ {
+    "compilerOptions": {
+
+        // Enable error reporting in the plopfile.
+        // Same as adding `// @ts-check` at the top.
+        "checkJs": true,
+  
+        // Generate .d.ts files from the source JavaScript files. The tsserver
+        // uses these .d.ts files internally - they're not written to the repo.
+        "declaration": true,
+  
+        // Only output d.ts files, don't try to transpile JS files to JS files.
+        "emitDeclarationOnly": true,
+
+        // Allow ES2019 features, like `repeat()` and `flatMap()`.
+        "lib": [ "dom", "es2019" ]
+    },
+
+    // Just match the plopfile.
+    "include": [ "plopfile.js" ]
+}

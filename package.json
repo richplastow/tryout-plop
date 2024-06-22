@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Exploring 'Plop' which Turborepo uses for code generation",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "plop": "plop",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -22,11 +22,13 @@ npm i -D plop
 On my macOS, the newly created node_modules/ is 17,419,115 bytes (34.3 MB on
 disk) for 5,895 items.
 
-In package.json, add the following to `"scripts"`:
+In package.json, specify that we will be using ES6 module imports, and add one
+item to `"scripts"`:
 
 ```json
 {
   ...,
+  "type": "module",
   "scripts": {
     "plop": "plop"
   },
@@ -34,14 +36,58 @@ In package.json, add the following to `"scripts"`:
 }
 ```
 
+## Create a TypeScript configuration file
+
+This repo does not directly use any TypeScript, but the following file will
+improve the developer experience when working on the plopfile.js file.
+
+Add tsconfig.json to the top level:
+
+```json
+/**
+ * This file tells VS Code's TypeScript server to highlight type errors in the
+ * plopfile.js JavaScript file. You read that right: the plopfile is JavaScript,
+ * not TypeScript, but the developer experience still benefits from live type
+ * checking.
+ *
+ * This file does not:
+ * - Generate any type declarations
+ * - Check that types are used correctly before deployment
+ */
+ {
+    "compilerOptions": {
+
+        // Enable error reporting in the plopfile.
+        // Same as adding `// @ts-check` at the top.
+        "checkJs": true,
+  
+        // Generate .d.ts files from the source JavaScript files. The tsserver
+        // uses these .d.ts files internally - they're not written to the repo.
+        "declaration": true,
+  
+        // Only output d.ts files, don't try to transpile JS files to JS files.
+        "emitDeclarationOnly": true,
+
+        // Allow ES2019 features, like `repeat()` and `flatMap()`.
+        "lib": [ "dom", "es2019" ]
+    },
+
+    // Just match the plopfile.
+    "include": [ "plopfile.js" ]
+}
+```
+
 ## Create the first example generator
 
 Based on the [plop docs,](
 https://plopjs.com/documentation/#3-create-a-plopfilejs-at-the-root-of-your-project)
-create plopfile.mjs in the top-level:
+create plopfile.js in the top-level:
 
 ```js
-export default function (plop) {
+export default function (
+    /** @type {import('plop').NodePlopAPI} */
+    plop
+) {
     plop.setGenerator('example-1', {
         description: 'First example generator',
         prompts: [
