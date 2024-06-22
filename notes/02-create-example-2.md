@@ -148,12 +148,12 @@ Tudo bem
 
 You should see`<html lang="pt">` in the generated index.html file.
 
-## Ensure filenames are valid
+## Ensure filenames are kebab-case
 
-Currently if a user enters a `heading` like `"My Doc /.."`, then the files will be
-written to an unexpected place, and the filename is not very portable. It would
-be better to validate the `heading`, and convert it to
-[kebab case.](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case)
+Currently if a user enters a `heading` like `"My Doc /.."`, then the files will
+be written to an unexpected place, and the filename will contain spaces. It
+would be better to convert the `heading` to [kebab case.](
+https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case)
 
 Plop comes with some built-in
 [case-modifier helpers,](https://plopjs.com/documentation/#case-modifiers)
