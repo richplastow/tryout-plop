@@ -58,7 +58,7 @@ Create example-templates/example-2/html.hbs:
 <body>
     <h1>{{title}}</h1>
     <p>{{description}}</p>
-    <main>{{main}}</main>
+    <main>TODO</main>
     <pre></pre>
     <script src="./script.js"></script>
 </body>
@@ -147,3 +147,66 @@ Tudo bem
 ```
 
 You should see`<html lang="pt">` in the generated index.html file.
+
+## Ensure filenames are valid
+
+Currently if a user enters a `title` like `"My Doc /.."`, then the files will be
+written to an unexpected place, and the filename is not very portable. It would
+be better to validate the `title`, and convert it to
+[kebab case.](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case)
+
+Plop comes with some built-in
+[case-modifier helpers,](https://plopjs.com/documentation/#case-modifiers)
+which are listed in the node_modules/node-plop/src/baked-in-helpers.js script.
+
+These built-in helpers are made available to Plop’s handlebars instance, so can
+be used immediately in plopfile.mjs:
+
+```js
+...
+        actions: [
+            {
+                type: 'add',
+                path: 'example-output/example-2-{{kebabCase title}}/index.html',
+                ...
+            },
+        ],
+...
+```
+
+...and also in the example-templates/example-2/html.hbs template file:
+
+```hbs
+...
+<body>
+    <tt>{{kebabCase title}}</tt>
+    <h1>{{title}}</h1>
+...
+```
+
+Check that it works again:
+
+```sh
+npm run plop example-2
+# > tryout-plop@0.0.1 plop
+# > plop example-2
+# ? Please provide a language code (Use arrow keys)
+English (default) 
+# ? Please provide a title
+Foo /.. Bar 😊
+# ? Please provide a short description
+Using the kebabCase helper
+# ✔  ++ /example-output/example-2-foo-bar/index.html
+open example-output/example-2-foo-bar/index.html
+```
+
+Your default browser should open, showing:
+
+```
+foo-bar
+Foo /.. Bar 😊
+Using the kebabCase helper
+TODO
+```
+
+It's worth adding the `kebabCase` helper to example-1’s `path`, too.

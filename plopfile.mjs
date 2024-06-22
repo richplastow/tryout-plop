@@ -11,7 +11,7 @@ export default function (plop) {
         actions: [
             {
                 type: 'add',
-                path: 'example-output/example-1-{{title}}.js',
+                path: 'example-output/example-1-{{kebabCase title}}.js',
                 templateFile: 'example-templates/example-1.hbs'
             },
         ],
@@ -49,7 +49,7 @@ export default function (plop) {
         actions: [
             {
                 type: 'add',
-                path: 'example-output/example-2-{{title}}/index.html',
+                path: 'example-output/example-2-{{kebabCase title}}/index.html',
                 templateFile: 'example-templates/example-2/html.hbs',
                 force: true, // overwrite file if it exists
             },
