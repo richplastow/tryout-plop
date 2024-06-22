@@ -47,14 +47,14 @@ export default function (plop) {
         prompts: [
             {
                 type: 'input',
-                name: 'title',
-                message: 'Please provide a title'
+                name: 'heading',
+                message: 'Please provide a heading'
             },
         ],
         actions: [
             {
                 type: 'add',
-                path: 'example-output/example-1-{{title}}.js',
+                path: 'example-output/example-1-{{heading}}.js',
                 templateFile: 'example-templates/example-1.hbs'
             },
         ],
@@ -65,7 +65,7 @@ export default function (plop) {
 And create example-templates/example-1.hbs - the first example template:
 
 ```hbs
-console.log('This is Example 1, title is "{{title}}"');
+console.log('This is Example 1, heading is "{{heading}}"');
 ```
 
 Check that it works using `npm run`:
@@ -74,10 +74,12 @@ Check that it works using `npm run`:
 npm run plop example-1
 # > tryout-plop@0.0.1 plop
 # > plop example-1
-# ? Please provide a title
-some-title
-# ✔  ++ /example-output/example-1-some-title.js
-node example-output/example-1-some-title.js
-# This is Example 1, title is "some-title"
+# ? Please provide a heading
+some-heading
+# ✔  ++ /example-output/example-1-some-heading.js
+node example-output/example-1-some-heading.js
+# This is Example 1, heading is "some-heading"
 ```
 
+> __BUG:__ Don’t use `title` as a property name in Plop. It can lead to problems
+> when trying to bypass prompts on the command line.

@@ -1,3 +1,3 @@
-// example-2-{{kebabCase heading}}/script.js
+// example-2-here-s-the-heading/script.js
 
 document.querySelector('pre').innerHTML = 123;

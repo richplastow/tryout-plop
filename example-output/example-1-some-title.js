@@ -1,1 +1,1 @@
-console.log('This is Example 1, title is "some-title"');
+console.log('This is Example 1, heading is "some-heading"');

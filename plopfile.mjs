@@ -4,14 +4,14 @@ export default function (plop) {
         prompts: [
             {
                 type: 'input',
-                name: 'title',
-                message: 'Please provide a title'
+                name: 'heading',
+                message: 'Please provide a heading'
             },
         ],
         actions: [
             {
                 type: 'add',
-                path: 'example-output/example-1-{{kebabCase title}}.js',
+                path: 'example-output/example-1-{{kebabCase heading}}.js',
                 templateFile: 'example-templates/example-1.hbs'
             },
         ],
@@ -37,8 +37,8 @@ export default function (plop) {
             },
             {
                 type: 'input',
-                name: 'title',
-                message: 'Please provide a title',
+                name: 'heading',
+                message: 'Please provide a heading',
             },
             {
                 type: 'input',
@@ -50,19 +50,19 @@ export default function (plop) {
         actions: [
             {
                 type: 'add',
-                path: 'example-output/example-2-{{kebabCase title}}/index.html',
+                path: 'example-output/example-2-{{kebabCase heading}}/index.html',
                 templateFile: 'example-templates/example-2/html.hbs',
                 force: true, // overwrite file if it exists
             },
             {
                 type: 'add',
-                path: 'example-output/example-2-{{kebabCase title}}/script.js',
+                path: 'example-output/example-2-{{kebabCase heading}}/script.js',
                 templateFile: 'example-templates/example-2/script.hbs',
                 force: true,
             },
             {
                 type: 'add',
-                path: 'example-output/example-2-{{kebabCase title}}/style.css',
+                path: 'example-output/example-2-{{kebabCase heading}}/style.css',
                 templateFile: 'example-templates/example-2/style.hbs',
                 force: true,
             },
