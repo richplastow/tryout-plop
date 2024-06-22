@@ -7,6 +7,9 @@
 - <https://github.com/richplastow/tryout-plop>
 - <https://richplastow.com/tryout-plop/>
 
+[Read the Notes](./notes/00-notes.md) for a step-by-step runthrough of how this
+repo was made.
+
 ## Installation
 
 ```sh
@@ -19,7 +22,7 @@ npm install
 
 The node_modules/ folder is 17,425,263 bytes (34.3 MB on disk) for 5,895 items.
 
-## Usage
+## Basic usage
 
 ```sh
 npm run plop example-1

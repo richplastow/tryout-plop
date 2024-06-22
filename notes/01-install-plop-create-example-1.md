@@ -1,4 +1,4 @@
-# Step 1: Install Plop
+# Step 1: Install Plop and create example-1
 
 [^ Notes](./00-notes.md)
 
