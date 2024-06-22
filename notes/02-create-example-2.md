@@ -235,7 +235,7 @@ body {
 }
 ```
 
-And in plopfile.mjs tell the second example’s `actions` array how to genereate them:
+And in plopfile.mjs tell the second example’s `actions` array how to generate them:
 
 ```mjs
 export default function (plop) {
@@ -264,7 +264,7 @@ export default function (plop) {
 };
 ```
 
-Check that everything’s working, without needing the `heading` prompt:
+Check that everything’s working (bypassing the `heading` prompt, in this case):
 
 ```sh
 npm run plop example-2 _ "All Working..."
