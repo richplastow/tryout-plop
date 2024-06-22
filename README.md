@@ -54,7 +54,7 @@ open example-output/example-2-here-s-the-heading/index.html
 # ... bypassing props using underscores works ok via `npm run plop`
 npm run plop example-2 -- --heading "Another Page"
 # ... prompts for 'language code', 'description' AND ALSO 'heading'
-# ... bypassing props by name does not works via `npm run plop`
+# ... bypassing props by name does not work via `npm run plop`
 ```
 
 After installing `plop` globally, bypassing prompts by name should work:
