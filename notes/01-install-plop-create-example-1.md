@@ -1,4 +1,4 @@
-# Step 1: Install Plop and create example-1
+# Step 1: Install Plop and create Example 1
 
 [^ Notes](./00-notes.md)
 
@@ -8,7 +8,7 @@
 
 ## Install `plop` 4.0.1 as a dev-dependency
 
-```bash
+```sh
 npm i -D plop
 # npm WARN deprecated inflight@1.0.6: ...
 # npm WARN deprecated rimraf@3.0.2: ...
@@ -49,14 +49,14 @@ export default function (plop) {
                 type: 'input',
                 name: 'title',
                 message: 'Please provide a title'
-            }
+            },
         ],
         actions: [
             {
                 type: 'add',
                 path: 'example-output/example-1-{{title}}.js',
                 templateFile: 'example-templates/example-1.hbs'
-            }
+            },
         ],
     });
 };
@@ -70,7 +70,7 @@ console.log('This is Example 1, title is "{{title}}"');
 
 Check that it works using `npm run`:
 
-```bash
+```sh
 npm run plop example-1
 # > tryout-plop@0.0.1 plop
 # > plop example-1
