@@ -2,18 +2,24 @@
 
 [^ Notes](./00-notes.md)
 
-The second example generator investigates different input types, and uses
-handlebars in a more sophisticated way. It also outputs more than one file.
+The second example generator uses:
+
+- The [`'list'` input type,](
+  https://github.com/SBoudrias/Inquirer.js/blob/main/packages/rawlist/README.md)
+  to select from multiple options
+- A [handlebars helper](https://handlebarsjs.com/guide/expressions.html#helpers)
+  to convert input text to kebab-case
+- The [`'AddMany'` action type](https://plopjs.com/documentation/#addmany)
+  to output more than one file
 
 ## Start creating the second example generator
 
 Create another `plop.setGenerator()` call, in plopfile.js in the top-level.
 
-The `force: true` property is handy, because we will be re-running this example
-several times while creating it, and giving it the same heading every time avoids
-building up masses of generated files.
-
-See <https://plopjs.com/documentation/#add> for more of Plop’s `add` properties.
+> __TIP:__ We will be re-running this example several times while creating it.
+> We can avoid building up masses of generated files by giving it the same
+> heading every time, and setting the `force: true` property. (Note that there’s
+> also a `--force` command line option).
 
 ```js
 ...
@@ -36,7 +42,7 @@ See <https://plopjs.com/documentation/#add> for more of Plop’s `add` propertie
             {
                 type: 'add',
                 path: 'example-output/example-2-{{heading}}/index.html',
-                templateFile: 'example-templates/example-2/html.hbs',
+                templateFile: 'example-templates/example-2/index.html.hbs',
                 force: true, // overwrite file if it exists
             },
         ],
@@ -44,7 +50,7 @@ See <https://plopjs.com/documentation/#add> for more of Plop’s `add` propertie
 ...
 ```
 
-Create example-templates/example-2/html.hbs:
+Create example-templates/example-2/index.html.hbs:
 
 ```hbs
 <!DOCTYPE html>
@@ -174,9 +180,10 @@ be used immediately in plopfile.js:
 ...
 ```
 
-...and also in the example-templates/example-2/html.hbs template file:
+...and also in the example-templates/example-2/index.html.hbs template file:
 
 ```hbs
+<!-- example-2-{{kebabCase heading}}/index.html -->
 ...
 <body>
     <code>{{kebabCase heading}}</code>
@@ -215,7 +222,7 @@ It's worth adding the `kebabCase` helper to example-1’s `path`, too.
 
 These both have a commented line at the top, showing their generated path:
 
-Create the example-templates/example-2/script.hbs JavaScript file:
+Create the example-templates/example-2/script.js.hbs JavaScript file:
 
 ```hbs
 // example-2-{{kebabCase heading}}/script.js
@@ -223,7 +230,7 @@ Create the example-templates/example-2/script.hbs JavaScript file:
 document.querySelector('pre').innerHTML = 123;
 ```
 
-And create the example-templates/example-2/style.hbs CSS file:
+And create the example-templates/example-2/style.css.hbs CSS file:
 
 ```hbs
 /* example-2-{{kebabCase heading}}/style.css */
@@ -235,34 +242,49 @@ body {
 }
 ```
 
-And in plopfile.js tell the second example’s `actions` array how to generate them:
+And in plopfile.js you could generate the CSS and JS files verbosely like this:
 
-```mjs
-export default function (plop) {
+```js
 ...
         actions: [
             {
                 type: 'add',
                 path: 'example-output/example-2-{{kebabCase heading}}/index.html',
-                templateFile: 'example-templates/example-2/html.hbs',
+                templateFile: 'example-templates/example-2/index.html.hbs',
                 force: true, // overwrite file if it exists
             },
             {
                 type: 'add',
                 path: 'example-output/example-2-{{kebabCase heading}}/script.js',
-                templateFile: 'example-templates/example-2/script.hbs',
+                templateFile: 'example-templates/example-2/script.js.hbs',
                 force: true,
             },
             {
                 type: 'add',
                 path: 'example-output/example-2-{{kebabCase heading}}/style.css',
-                templateFile: 'example-templates/example-2/style.hbs',
+                templateFile: 'example-templates/example-2/style.css.hbs',
                 force: true,
             },
         ],
 ...
-};
 ```
+
+But Plop provides the [`'AddMany'` action type](
+https://plopjs.com/documentation/#addmany) for precisely this purpose:
+
+```js
+...
+        actions: [
+            {
+                type: 'addMany',
+                destination: 'example-output/example-2-{{kebabCase heading}}',
+                templateFiles: 'example-templates/example-2/*.hbs',
+                force: true, // overwrite files if they exist
+            },
+        ],
+...
+```
+
 
 Check that everything’s working (bypassing the `heading` prompt, in this case):
 

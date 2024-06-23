@@ -52,23 +52,29 @@ export default function (
         ],
         actions: [
             {
-                type: 'add',
-                path: 'example-output/example-2-{{kebabCase heading}}/index.html',
-                templateFile: 'example-templates/example-2/html.hbs',
-                force: true, // overwrite file if it exists
+                type: 'addMany',
+                destination: 'example-output/example-2-{{kebabCase heading}}',
+                templateFiles: 'example-templates/example-2/*.hbs',
+                force: true, // overwrite files if they exist
             },
-            {
-                type: 'add',
-                path: 'example-output/example-2-{{kebabCase heading}}/script.js',
-                templateFile: 'example-templates/example-2/script.hbs',
-                force: true,
-            },
-            {
-                type: 'add',
-                path: 'example-output/example-2-{{kebabCase heading}}/style.css',
-                templateFile: 'example-templates/example-2/style.hbs',
-                force: true,
-            },
+            // {
+            //     type: 'add',
+            //     path: 'example-output/example-2-{{kebabCase heading}}/index.html',
+            //     templateFile: 'example-templates/example-2/index.html.hbs',
+            //     force: true, // overwrite file if it exists
+            // },
+            // {
+            //     type: 'add',
+            //     path: 'example-output/example-2-{{kebabCase heading}}/script.js',
+            //     templateFile: 'example-templates/example-2/script.js.hbs',
+            //     force: true,
+            // },
+            // {
+            //     type: 'add',
+            //     path: 'example-output/example-2-{{kebabCase heading}}/style.css',
+            //     templateFile: 'example-templates/example-2/style.css.hbs',
+            //     force: true,
+            // },
         ],
     });
 };
