@@ -42,6 +42,12 @@ export default function (
                 type: 'input',
                 name: 'heading',
                 message: 'Please provide a heading',
+                validate: (input) => {
+                    if (input === '') return 'The heading is not optional!';
+                    if (input.replace(/\s/g, '') === '') return 'Contains only whitespace!';
+                    if (input.length > 100) return 'Contains more than 100 characters!';
+                    return true;
+                },
             },
             {
                 type: 'input',
