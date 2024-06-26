@@ -5,8 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "coverage": "vitest run --coverage",
     "plop": "plop",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preflight": "vitest run",
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,8 @@
   },
   "homepage": "https://richplastow.com/tryout-plop/",
   "devDependencies": {
-    "plop": "^4.0.1"
+    "@vitest/coverage-v8": "^1.6.0",
+    "plop": "^4.0.1",
+    "vitest": "^1.6.0"
   }
 }
